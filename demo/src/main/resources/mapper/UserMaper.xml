@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射器名字空间，即类的全限定名称 -->
+<mapper namespace="com.example.demo.mapper.UserMaper">
+
+<!--<select id="selectMapById" resultType="map">-->
+<!--    select id,name,age,email from user where id=#{id}-->
+<!--</select>-->
+    <select id="selectByUsername" resultType="com.example.demo.pojo.AppUser">
+        select * from `user` where username = #{username}
+    </select>
+    <select id="selectusermapper" resultType="com.example.demo.pojo.AppUser">
+        select * from `user`
+        <where>
+            <if test="username != '' and name !=''">
+                username like "%"#{username}"%" or  name like "%"#{name}"%"
+            </if>
+            <if test="username != '' and name ==''">
+                username like "%"#{username}"%"
+            </if>
+            <if test="username == '' and name !=''">
+                name like "%"#{name}"%"
+            </if>
+        </where>
+    </select>
+</mapper>

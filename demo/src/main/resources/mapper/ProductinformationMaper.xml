@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射器名字空间，即类的全限定名称 barcode,productname,origin -->
+<mapper namespace="com.example.demo.mapper.ProductinformationMaper">
+
+    <select id="eqProductinformationAll" resultType="com.example.demo.pojo.Productinformation">
+
+        select * from `productinformation`
+        <where>
+            <if test="barcode != '' and productname !='' and origin!=''">
+                barcode like "%"#{barcode}"%" and  productname like "%"#{productname}"%" and origin like "%"#{origin}"%"
+            </if>
+            <if test="barcode != '' and productname =='' and origin ==''">
+                barcode like "%"#{barcode}"%"
+            </if>
+            <if test="barcode == '' and productname !=''and origin ==''">
+                productname like "%"#{productname}"%"
+            </if>
+            <if test="barcode =='' and productname ==''and origin !=''">
+                origin like "%"#{origin}"%"
+            </if>
+
+            <if test="barcode !='' and productname !=''and origin ==''">
+                barcode like "%"#{barcode}"%" and  productname like "%"#{productname}"%"
+            </if>
+
+            <if test="barcode == '' and productname !=''and origin !=''">
+                productname like "%"#{productname}"%" and  origin like "%"#{origin}"%"
+            </if>
+            <if test="barcode != '' and productname ==''and origin !=''">
+                barcode like "%"#{barcode}"%" and  origin like "%"#{origin}"%"
+            </if>
+        </where>
+        ORDER BY id desc
+    </select>
+</mapper>

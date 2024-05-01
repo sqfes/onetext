@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射器名字空间，即类的全限定名称 -->
+<mapper namespace="com.example.demo.mapper.ReportdamageMaper">
+
+    <select id="eqnotreportdamage" resultType="com.example.demo.pojo.Reportdamage">
+        SELECT * FROM `reportdamage` WHERE id=#{id} AND barcode=#{barcode} AND inbounddate=#{inbounddate1} AND rangees=#{rangees1}
+    </select>
+</mapper>

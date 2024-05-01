@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射器名字空间，即类的全限定名称 -->
+<mapper namespace="com.example.demo.mapper.InboundMaper">
+    <select id="eqProductinformationAll" resultType="com.example.demo.pojo.Inventory">
+        select * from `inventory`
+        <where>
+            <if test="barcodes != '' and productnames !='' and inbounddate !='' and rangeesa!=''and rangeesb!=''">
+                barcode like "%"#{barcodes}"%" and  productname like "%"#{productnames}"%" and  inbounddate like "%"#{inbounddate}"%" and rangees >= #{rangeesa} AND <![CDATA[rangees <= #{rangeesb}]]>
+            </if>
+            <if test="barcodes != '' and productnames =='' and inbounddate =='' and rangeesa==''and rangeesb==''">
+                barcode like "%"#{barcodes}"%"
+            </if>
+            <if test="barcodes =='' and productnames !=''and inbounddate =='' and rangeesa==''and rangeesb==''">
+                productname like "%"#{productnames}"%"
+            </if>
+            <if test="barcodes =='' and productnames ==''and inbounddate !='' and rangeesa==''and rangeesb==''">
+                inbounddate like "%"#{inbounddate}"%"
+            </if>
+
+            <if test="barcodes =='' and productnames ==''and inbounddate =='' and rangeesa!=''and rangeesb!=''">
+                rangees >= #{rangeesa} AND <![CDATA[rangees <= #{rangeesb}]]>
+            </if>
+
+
+            <if test="barcodes !='' and productnames !=''and inbounddate =='' and rangeesa==''and rangeesb==''">
+                barcode like "%"#{barcodes}"%" and  productname like "%"#{productnames}"%"
+            </if>
+
+            <if test="barcodes =='' and productnames !=''and inbounddate !='' and rangeesa==''and rangeesb==''">
+                productname like "%"#{productnames}"%" and  inbounddate like "%"#{inbounddate}"%"
+            </if>
+
+            <if test="barcodes =='' and productnames ==''and inbounddate !='' and rangeesa!=''and rangeesb!=''">
+                inbounddate like "%"#{inbounddate}"%" and  rangees >= #{rangeesa} AND <![CDATA[rangees <= #{rangeesb}]]>
+            </if>
+
+            <if test="barcodes !='' and productnames ==''and inbounddate !='' and rangeesa==''and rangeesb==''">
+                barcode like "%"#{barcodes}"%" and   inbounddate like "%"#{inbounddate}"%"
+            </if>
+            <if test="barcodes !='' and productnames ==''and inbounddate =='' and rangeesa!=''and rangeesb!=''">
+                barcode like "%"#{barcodes}"%" and  rangees >= #{rangeesa} AND <![CDATA[rangees <= #{rangeesb}]]>
+            </if>
+
+            <if test="barcodes =='' and productnames !=''and inbounddate =='' and rangeesa!=''and rangeesb!=''">
+                productname like "%"#{productnames}"%" and  rangees >= #{rangeesa} AND <![CDATA[rangees <= #{rangeesb}]]>
+            </if>
+
+        </where>
+        ORDER BY id desc
+    </select>
+    <select id="inventorya" resultType="com.example.demo.pojo.SumInventory">
+        SELECT SUM(inboundquantity) AS suminboundquantity, barcode, productname
+        FROM inventory
+        <where>
+            <if test="barcodes != '' and productnames !=''">
+            barcode =#{barcodes} and productname=#{productnames}
+            </if>
+            <if test="barcodes != '' and productnames ==''">
+                barcode =#{barcodes}
+            </if>
+            <if test="barcodes == '' and productnames !=''">
+                productname=#{productnames}
+            </if>
+        </where>
+        GROUP BY barcode, productname
+    </select>
+</mapper>

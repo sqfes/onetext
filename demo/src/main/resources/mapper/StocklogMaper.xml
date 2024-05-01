@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 映射器名字空间，即类的全限定名称 -->
+<mapper namespace="com.example.demo.mapper.StocklogMaper">
+
+    <select id="getstocklogmapper" resultType="com.example.demo.pojo.Stocklog">
+        select * from `stocklog`
+        <where>
+            <if test="outinbounddate != '' and productname !='' and outin!=''">
+                outinbounddate like "%"#{outinbounddate}"%" and  productname like "%"#{productname}"%" and outin like "%"#{outin}"%"
+            </if>
+            <if test="outinbounddate != '' and productname =='' and outin ==''">
+                outinbounddate like "%"#{outinbounddate}"%"
+            </if>
+            <if test="outinbounddate == '' and productname !=''and outin ==''">
+                productname like "%"#{productname}"%"
+            </if>
+            <if test="outinbounddate =='' and productname ==''and outin !=''">
+                outin like "%"#{outin}"%"
+            </if>
+
+            <if test="outinbounddate !='' and productname !=''and outin ==''">
+                outinbounddate like "%"#{outinbounddate}"%" and  productname like "%"#{productname}"%"
+            </if>
+
+            <if test="outinbounddate == '' and productname !=''and outin !=''">
+                productname like "%"#{productname}"%" and  outin like "%"#{outin}"%"
+            </if>
+            <if test="outinbounddate != '' and productname ==''and outin !=''">
+                outinbounddate like "%"#{outinbounddate}"%" and  outin like "%"#{outin}"%"
+            </if>
+        </where>
+        ORDER BY id desc
+    </select>
+</mapper>

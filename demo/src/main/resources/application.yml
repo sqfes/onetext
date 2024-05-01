@@ -1,0 +1,36 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${ip}:3306/bise
+    username: root
+    password: sqf1996926
+  mvc:
+    cors:
+      allowed-origins: "*"
+      allow-credentials: true
+
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+ip: 192.168.130.207
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+#alipay:
+#  appId: 9021000135658844
+#  appPrivateKey: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCl9VJxOyDkcy0QGLe760gPe8csa89jU/9ZV4RTayfMxHO+Q6euYXp4u3srDLn89iVtJBA03b4IFRv4Vx4gGLiVQD41MlLiRXWsv/D90SfYdbuCrLGDS4EH6vTeSnzSRaOMFutpC/JYTejvn9yGtEFuGohYdt87lkEWxKsPGSquBr5ePD/rBZCv9CCR6cbIIqY2ax7yRvDVlUplqffrj+YqIj9oybNoy+rc0cTyPFKz/PI0l1e8mjEzLrpeZ3jU+WXnV5kfc2Mj0aWZaUAjCudQx3pkuSLRPks+mwovGu2OkIleXi9kXKBqBsZR6PIs1AkuORA0VtwezKDfSsCkUqapAgMBAAECggEADav7IbbkS82tPbE7mbCVXCkvTFqJWD54P8z06sZeHgFlI5yBON1w8HdJe09uFwfUJ3ycFS7bU+EhT8ElizFeK3WCanF94IQmYJfja5WKecuhKe++I/nZZGSXzaRHSi9QfN76f8nrKhkpAmyiBzrcVQy8hMUuOMN1E0IacYD6QiHLaHhau97bpH/lEsHiono3BuvMrXc5H4XTjHkDa8OUahtgztWpPp8473PATqjRZ7GFx59K0gkAVz16r7JfUTGeK44X3rfFsRfYacmQQ/h9ViXNNcxjhrnMIqHhgLPUGKUaZ/z05+eZRfZwhAiHbp1qYofpfhi7JwULRa98yGvPAQKBgQD9LuwVUHBVUfx4dNdnQKxTfb8A3Nm+T+RmKjtu/6ztDVrcBc9H2NWlgnDed00g23ZLNjCTdaTYsLKsrylD0HR+OMY+RYrm1OhwwyCHA5dPa6Nmv1Zq01a77en/44+qRE/jCwexhj2Avec2KS5oCOyr5kV42QqsYzQltYEqRKVXIQKBgQCnzfqeMZ9zEGqdISbKe52DLJz2nvAuLAeEfBSvq8enJQoDEwMkF71keTbCPBoacgP/j3Gy6EbWGo6Mm/0/CwSso/tDMxFKn1nLu5cBN7FcsICdva6FlT3dJvbs3pDeFNo6cwrF5kDUBFS9zGhAHeOeVq8S4BmIvqsaEVUEJYRGiQKBgQDutDeXnOBcQNE1TIvt6HbQvOTBTnfoy3A+tqCUdXA3i3jXqo6UYaaExmfeB0LrsJ5mKPBBhxBl0KqUzwyryDSc8LBP88cS/TctYXsgcE1Pbt9/NvSmAR1sT9JoFMfVs1RSborRYAxKfkEoukjrg0aIh7GGT7OVdm6rAuaF0HTGoQKBgEvNY4o0tme/IborcJ+FaekIrTtHHw5se1TgzGNzAPTDaZtr6j5Srw6FJzRk/BG4MZAvl1gPT3iGdKCWErd43bqzNNztY8FG7MR40EUPiIJrhR48wmq7uT9+y4rDG8QGvXIr59DwK5bbAgDfJrTYC6vKUrn/G+nG3/odnD8MR42pAoGABlYJdkAeju3dClEWIeW7yw121Bu86oJO8Fb+rN02PCg+ddr5aBDZdHeg3EQ8xMhEV27EgRCfi6FMU+hI7ijldTWI8zrHN+BS7yd9Wz6Zt0wuHA3C86G4lpSo2bkT1jIPynORRvu5Ra+x+Qoox+r59a12gzKthEEBmFZX/bDy3P0=
+#  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEApdcVrItQJTPnFX1IlR82NOJ+e7t20hrsw4PtwknOM1bH3t+igg2dqMEkBedGkrX6jDyqDaqDag90BX/cpeHT1KowxNYjV4J5Z77MvdV0gfP8HKOz/7VXGX4xNTKuX89fZ5MH8lpiIR1e1Tc/jhJqi07v4JGXxaOAjmoYEY9eDcrfsntaD3XTF2kRYdtv6iSPmN9cMJBaCXH5ExWGwg8SZeVbyRCBW7Y9nlNwJGC+2nTROtNGz0zQG70hyhWR5LvMroW88ThDFJKHAykz+OzTh5ur5ysHZLIag8pgV43vqhZt4SVekibzao7at1aA6k0Fnk/V/s8Ka9NdZlfe8sNL1wIDAQAB
+#  notifyUrl: http://4eagjt.natappfree.cc//alipay/notify
+#  retureUrl: http://192.168.45.207:7000
+
+
+#  商户账号fkqgtn1927@sandbox.com
+#  登录密码111111
+#  买家账号gnlqwk8671@sandbox.com
+#  登录密码111111
+
